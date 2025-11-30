@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alke Wallet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="container pt-4">
+    <h2>Enviar Dinero</h2>
+
+    <form onsubmit="enviarDinero(event)">
+
+        <div class="mb-3">
+            <label>Buscar contacto</label>
+            <input id="contacto" type="text" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Monto a enviar</label>
+            <input id="montoEnviar" type="number" class="form-control" required>
+        </div>
+
+        <button class="btn btn-primary">Enviar</button>
+        <a href="menu.html" class="btn btn-secondary">Volver</a>
+    </form>
+
+    <script>
+        // autocompletar
+        $("#contacto").on("input", function () {
+            const value = $(this).val().toLowerCase();
+            const sugerencia = contactos.find(c => c.toLowerCase().startsWith(value));
+            if (sugerencia) $(this).val(sugerencia);
+        });
+    </script>
+</body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</html>

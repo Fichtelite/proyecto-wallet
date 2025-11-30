@@ -1,0 +1,22 @@
+/* Estilos generales */
+body {
+    background: #f5f6fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Centrado del login */
+.login-container {
+    max-width: 380px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+/* Tarjetas del menú */
+.menu-card {
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.menu-card:hover {
+    transform: scale(1.03);
+}
