@@ -1,41 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alke Wallet</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Alke Wallet — Enviar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
-<body class="container pt-4">
-    <h2>Enviar Dinero</h2>
-
-    <form onsubmit="enviarDinero(event)">
-
-        <div class="mb-3">
-            <label>Buscar contacto</label>
-            <input id="contacto" type="text" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label>Monto a enviar</label>
-            <input id="montoEnviar" type="number" class="form-control" required>
-        </div>
-
-        <button class="btn btn-primary">Enviar</button>
+<body>
+  <div class="container-main">
+    <div class="header-row">
+      <h3>Enviar dinero</h3>
+      <div>
         <a href="menu.html" class="btn btn-secondary">Volver</a>
-    </form>
+      </div>
+    </div>
 
-    <script>
-        // autocompletar
-        $("#contacto").on("input", function () {
-            const value = $(this).val().toLowerCase();
-            const sugerencia = contactos.find(c => c.toLowerCase().startsWith(value));
-            if (sugerencia) $(this).val(sugerencia);
-        });
-    </script>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="form-card p-3">
+          <form id="send-form">
+            <div class="mb-3">
+              <label class="form-label">Contacto</label>
+              <select id="contacto" class="form-select" required></select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Monto</label>
+              <input id="montoEnviar" type="number" class="form-control" min="1" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <button id="btnOpenAgregar" type="button" class="btn btn-outline-secondary ms-2">Agregar contacto</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="card p-3">
+          <h5>Contactos</h5>
+          <ul id="listaContactos" class="contacts-list mt-2"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popup" class="popup"></div>
+
+  <div id="popupAgregar" class="popup-agregar" style="display:none;">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <h5>Agregar contacto</h5>
+      <button id="btnCerrarPopupAgregar" class="close-btn">✕</button>
+    </div>
+    <div id="paInner" style="margin-top:8px">
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input id="nuevoNombre" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Email</label>
+        <input id="nuevoEmail" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Teléfono</label>
+        <input id="nuevoTelefono" class="form-control" />
+      </div>
+      <div style="text-align:right;margin-top:8px">
+        <button id="btnGuardarContacto" class="btn btn-success">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/app.js"></script>
 </html>
